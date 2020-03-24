@@ -3,7 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form'
 import { ZoomMtg } from '@zoomus/websdk';
 
-// const API_KEY = 'YOUR_API_KEY';
+const API_KEY = 'N4AyKlmIQGi_Nsw4cXFtlw';
+const meetingId = '814584950';
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -28,23 +29,24 @@ class LoginForm extends React.Component {
   
     handleChange(event) {
       this.setState({value: event.target.value});
-      fetch('https://na-conference.herokuapp.com/api/zoom/'+meetConfig.meetingNumber)
+  
+    handleSubmit(event) {
+      alert('A name was submitted: ' + this.state.value);
+      event.preventDefault();
+      fetch('https://na-conference.herokuapp.com/api/zoom/'+meetingId)
         .then((response) => {
-            return response.json();
-        })
-        .then((data) => {
-            console.log('signature', res.result);
+            console.log('signature', response.result);
             ZoomMtg.init({
-                leaveUrl: 'http://www.zoom.us',
+                leaveUrl: '/',
                 success() {
                     ZoomMtg.join(
                         {
-                            meetingNumber: meetConfig.meetingNumber,
-                            userName: meetConfig.userName,
-                            signature: res.result,
-                            apiKey: meetConfig.apiKey,
+                            meetingNumber: meetingId,
+                            userName: this.state.value,
+                            signature: response.result,
+                            apiKey: API_KEY,
                             userEmail: 'email@gmail.com',
-                            passWord: meetConfig.passWord,
+                            passWord: 1411,
                             success() {
                                 //$('#nav-tool').hide();
                                 console.log('join meeting success');
@@ -60,11 +62,7 @@ class LoginForm extends React.Component {
                 }
             });
         });
-    }
-  
-    handleSubmit(event) {
-      alert('A name was submitted: ' + this.state.value);
-      event.preventDefault();
+      }
     }
   
     render() {
