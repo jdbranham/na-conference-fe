@@ -1,0 +1,17 @@
+main {
+  width: 400px;
+  margin: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  margin-bottom: 2em;
+}
+
+.nav {
+  z-index: 999;
+}

@@ -1,0 +1,38 @@
+<div>
+  <nav ngbDropdown class="nav d-inline-block">
+    <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Read</button>
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+      <a ngbDropdownItem href="https://www.na.org/admin/include/spaw2/uploads/pdf/litfiles/us_english/misc/Who%20Is%20an%20Addict.pdf" 
+        target="_blank">Who is an addict?</a>
+      <a ngbDropdownItem href="http://www.na.org/?ID=litfiles/us_english/misc/Why%20Are%20We%20Here.pdf" 
+        target="_blank">Why are we here?</a>
+      <a ngbDropdownItem href="http://www.na.org/?ID=litfiles/us_english/misc/What%20Is%20the%20NA%20Program.pdf" 
+        target="_blank">What is the NA program?</a>
+      <a ngbDropdownItem href="http://www.na.org/?ID=litfiles/us_english/misc/We%20Do%20Recover.pdf" 
+        target="_blank">We do recover</a>
+      <a ngbDropdownItem href="http://www.na.org/?ID=litfiles/us_english/misc/How%20it%20Works.pdff" 
+        target="_blank">How it works</a>
+      <a ngbDropdownItem href="http://www.na.org/?ID=litfiles/us_english/misc/Twelve%20Traditions.pdf" 
+        target="_blank">The Twelve Traditions of NA</a>
+      <a ngbDropdownItem href="http://www.na.org/?ID=litfiles/us_english/misc/Just%20for%20Today.pdf" 
+        target="_blank">Just For Today</a>
+      <div class="divider"></div>
+      <a ngbDropdownItem href="https://docs.google.com/document/d/1PnO28fdEIcltHhSrtBrNP_mW6t7boWTxz5ZC579vseA" target="_policy">Group Policy</a>
+    </div>
+  </nav>
+  
+  <main>
+    <h1>Broadway Group</h1>
+    <form #f="ngForm" (ngSubmit)="getSignature()" ngNativeValidate>
+      <div class="form-group">
+        <input type="text" class="form-control" id="username" aria-describedby="usernameHelp" placeholder="Enter display name" [(ngModel)]="userName" name="userName" required>
+        <small id="usernameHelp" class="form-text text-muted">You can enter an anonymous name.</small>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="password" aria-describedby="passwordHelp" placeholder="Password" [(ngModel)]="passWord" name="passWord" required>
+        <small id="passwordHelp" class="form-text text-muted">Get the pasword from a member</small>
+      </div>
+      <button type="submit" class="btn btn-primary">Join Meeting</button>
+    </form>
+  </main>
+</div>
