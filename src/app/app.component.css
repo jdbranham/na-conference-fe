@@ -1,4 +1,9 @@
-main {
+.body {
+  overflow: auto;
+  height: 100vh;
+}
+
+main, main form {
   width: 400px;
   margin: auto;
   text-align: center;
@@ -14,4 +19,10 @@ h1 {
 
 .nav {
   z-index: 999;
+}
+
+.meeting-info {
+  max-width: 900px;
+  padding-top: 2em;
+  text-align: left;
 }

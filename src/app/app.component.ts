@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
   leaveUrl = 'https://na-conference.firebaseapp.com/';
   userName = '';
   userEmail = '';
-  passWord = '';
+  passWord = '4311';
 
   constructor(public httpClient: HttpClient, @Inject(DOCUMENT) document) {
 
