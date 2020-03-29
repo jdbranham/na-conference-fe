@@ -3,6 +3,7 @@
 
 html, body {
   min-width: 0 !important;
+  width: 100vw;
 }
 
 #zmmtg-root {
