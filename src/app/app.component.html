@@ -1,68 +1,161 @@
 <div class="body">
-  <nav ngbDropdown class="nav d-inline-block">
-    <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Read</button>
-    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-      <a ngbDropdownItem href="https://www.na.org/admin/include/spaw2/uploads/pdf/litfiles/us_english/misc/Who%20Is%20an%20Addict.pdf" 
-        target="_blank">Who is an addict?</a>
-      <a ngbDropdownItem href="http://www.na.org/?ID=litfiles/us_english/misc/Why%20Are%20We%20Here.pdf" 
-        target="_blank">Why are we here?</a>
-      <a ngbDropdownItem href="http://www.na.org/?ID=litfiles/us_english/misc/What%20Is%20the%20NA%20Program.pdf" 
-        target="_blank">What is the NA program?</a>
-      <a ngbDropdownItem href="http://www.na.org/?ID=litfiles/us_english/misc/We%20Do%20Recover.pdf" 
-        target="_blank">We do recover</a>
-      <a ngbDropdownItem href="http://www.na.org/?ID=litfiles/us_english/misc/How%20it%20Works.pdff" 
-        target="_blank">How it works</a>
-      <a ngbDropdownItem href="http://www.na.org/?ID=litfiles/us_english/misc/Twelve%20Traditions.pdf" 
-        target="_blank">The Twelve Traditions of NA</a>
-      <a ngbDropdownItem href="http://www.na.org/?ID=litfiles/us_english/misc/Just%20for%20Today.pdf" 
-        target="_blank">Just For Today</a>
-      <div class="divider"></div>
-      <a ngbDropdownItem href="https://docs.google.com/document/d/1PnO28fdEIcltHhSrtBrNP_mW6t7boWTxz5ZC579vseA" target="_policy">Group Policy</a>
-    </div>
-  </nav>
-  
-  <main>
-    <h1>Broadway Group</h1>
-    <form #f="ngForm" (ngSubmit)="getSignature()" ngNativeValidate>
-      <div class="form-group">
-        <input type="text" class="form-control" id="username" aria-describedby="usernameHelp" placeholder="Enter display name" [(ngModel)]="userName" name="userName" required>
-        <small id="usernameHelp" class="form-text text-muted">You can enter an anonymous name.</small>
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" id="password" aria-describedby="passwordHelp" placeholder="Password" [(ngModel)]="passWord" name="passWord" required>
-        <small id="passwordHelp" class="form-text text-muted">Get the pasword from a member</small>
-      </div>
-      <button type="submit" class="btn btn-primary">Join Meeting</button>
-    </form>
-    <div class="meeting-info">
-      <div class="well">
-        <p>You can also join through the Zoom app with limited access to the meeting tools.</p>
-        <div>
-          <h4>Time: 12pm and 7pm CST Daily</h4>
-          <p>Join Zoom Meeting <a href="https://zoom.us/j/814584950">https://zoom.us/j/814584950</a></p>
-          <p>Meeting ID: 814 584 950</p>
+  <ul ngbNav #nav="ngbNav" [(activeId)]="activeId" [destroyOnHide]="false" class="nav-tabs">
+    <li [ngbNavItem]="1">
+      <a ngbNavLink>Home</a>
+      <ng-template ngbNavContent>
+        <div class="content center">
+          <h1>Broadway Group</h1>
+          <p>12pm and 7pm CST Daily</p>
           <p>Password: 4311</p>
-          <p>One tap mobile</p>
-          <p>+13462487799,,814584950# US (Houston)</p>
-          <p>+16699009128,,814584950# US (San Jose)</p>
+          <div class="join">
+            <a class="btn btn-primary" href="https://zoom.us/j/814584950" target="_zoom">Join Zoom Meeting</a>
+          </div>
 
-          <pre>
-Dial by your location
-    +1 346 248 7799 US (Houston)
-    +1 669 900 9128 US (San Jose)
-    +1 312 626 6799 US (Chicago)
-    +1 646 558 8656 US (New York)
-    +1 253 215 8782 US
-    +1 301 715 8592 US
-Meeting ID: 814 584 950
-          </pre>
-          <p>Find your local number: <a href="https://zoom.us/u/auUw8eye">https://zoom.us/u/auUw8eye</a></p>
+          <div>
+            <a class="btn btn-primary" href="https://www.venmo.com/Broadway-NA" target="_venmo">7th Tradition Donation</a>
+          </div>
+
+          <div class="main-link">
+            <a href="https://docs.google.com/document/d/1Al_5RVe-aa1nZD31zOASomwI-nkB0M2vKFbzPeVSCes/edit#heading=h.tdclmfiio2u2" target="_blank">Chairperson Guide</a>
+          </div>
+          <div class="main-link">
+            <a href="./assets/literature/b_t.pdf" target="_blank">Basic Text</a>
+          </div>
+          <div class="divider"></div>
+
+          <div class="main-link"><a href="https://docs.google.com/document/d/1PnO28fdEIcltHhSrtBrNP_mW6t7boWTxz5ZC579vseA" target="_policy">Group Policy</a></div>
         </div>
-      </div>
-    </div>
-    <footer>
-      <p>Urgent Help: <a href="tel:1-800-629-6757">1-800-NA-WORKS</a></p>
-      <p>Website Problems: support@savantly.net</p>
-    </footer>
-  </main>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="2">
+      <a ngbNavLink>Readings</a>
+      <ng-template ngbNavContent>
+        <div class="content readings">
+          <h1>Who is an Addict?</h1>
+          <p>Most of us do not have to think twice about this question.</p>
+          <p>WE KNOW! Our whole life and thinking was centered in drugs in one form or another, the getting and using and finding ways and means to get more.</p>
+          <p>We lived to use and used to live. Very simply, an addict is a man or woman whose life is controlled by drugs. We are people in the grip of a continuing and progressive illness whose ends are always the same: jails, institutions and death.</p>
+          <ng-container *ngTemplateOutlet="naCite"></ng-container>
+
+          <h1>Why are we here?</h1>
+          <p>Before coming to the Fellowship of NA, we could not manage our own lives. We could not live and enjoy life as other people do. We had to have something different and we thought we had found it in drugs. We placed their use ahead of the welfare of our families, our wives, husbands, and our children. We had to have drugs at all costs. We did many people great harm but most of all we harmed ourselves. Through our inability to accept personal responsibilities we were actually creating our own problems. We seemed to be incapable of facing life on its own terms.</p>
+          <p>Most of us realized that in our addiction we were slowly committing suicide, but addiction is such a cunning enemy of life that we had lost the power to do anything about it. Many of us ended up in jail or sought help through medicine, religion, and psychiatry. None of these methods was sufficient for us. Our disease always resurfaced or continued to progress until in desperation we sought help from each other in Narcotics Anonymous.</p>
+          <p>After coming to NA, we realized we were sick people. We suffered from a disease from which there is no known cure. It can, however, be arrested at some point and recovery is then possible.</p>
+          <ng-container *ngTemplateOutlet="naCite"></ng-container>
+
+          <h1>We do recover.</h1>
+          <p>When at the end of the road we find that we can no longer function as a human being, either with or without drugs, we all face the same dilemma. What is there left to do?</p>
+          <p>There seems to be this alternative: either go on as best we can to the bitter ends – jails, institutions or death – or find a new way to live.</p>
+          <p>In years gone by, very few addicts ever had this last choice. Those who are addicted today are more fortunate.</p>
+          <p>For the first time in man’s entire history, a simple way has been proving itself in the lives of many addicts. It is available to us all. This is a simple spiritual – not religious – program, known as Narcotics Anonymous.</p>
+          <ng-container *ngTemplateOutlet="naCite"></ng-container>
+
+          <h1>What is the Narcotics Anonymous program?</h1>
+          <p>NA is a nonprofit fellowship or society of men and women for whom drugs had become a major problem. We are recovering addicts who meet regularly to help each other stay clean. This is a program of complete abstinence from all drugs. There is only one requirement for membership, the desire to stop using. We suggest that you keep an open mind and give yourself a break. Our program is a set of principles written so simply that we can follow them in our daily lives. The most important thing about them is that they work.</p>
+          <p>There are no strings attached to NA. We are not affiliated with any other organizations. We have no initiation fees or dues, no pledges to sign, no promises to make to anyone. We are not connected with any political, religious, or law enforcement groups, and are under no surveillance at any time. Anyone may join us regardless of age, race, sexual identity, creed, religion, or lack of religion.</p>
+          <p>We are not interested in what or how much you used or who your connections were, what you have done in the past, how much or how little you have, but only in what you want to do about your problem and how we can help. The newcomer is the most important person at any meeting, because we can only keep what we have by giving it away. We have learned from our group experience that those who keep coming to our meetings regularly stay clean.</p>
+          <ng-container *ngTemplateOutlet="naCite"></ng-container>
+
+          <h1>How it works.</h1>
+          <p>If you want what we have to offer, and are willing to make the effort to get it, then you are ready to take certain steps. These are the principles that made our recovery possible:</p>
+          <ol>
+            <li>We admitted that we were powerless over our addiction, that our lives had become unmanageable.</li>
+            <li>We came to believe that a Power greater than ourselves could restore us to sanity.</li>
+            <li>We made a decision to turn our will and our lives over to the care of God as we understood Him.</li>
+            <li>We made a searching and fearless moral inventory of ourselves.</li>
+            <li>We admitted to God, to ourselves, and to another human being the exact nature of our wrongs.</li>
+            <li>We were entirely ready to have God remove all these defects of character</li>
+            <li>We humbly asked Him to remove our shortcomings.</li>
+            <li>We made a list of all persons we had harmed and became willing to make amends to them all.</li>
+            <li>We made direct amends to such people wherever possible, except when to do so would injure them or others.</li>
+            <li>We continued to take personal inventory and when we were wrong promptly admitted it.</li>
+            <li>We sought through prayer and meditation to improve our conscious contact with God as we understood Him, praying only for knowledge of His will for us and the power to carry that out.</li>
+            <li>Having had a spiritual awakening as a result of these steps, we tried to carry this message to addicts, and to practice these principles in all our affairs.</li>
+          </ol>
+          <p>This sounds like a big order, and we can’t do it all at once. We didn’t become addicted in one day, so remember – easy does it.</p>
+          <p>There is one thing more than anything else that will defeat us in our recovery; this is an attitude of indifference or intolerance toward spiritual principles. Three of these that are indispensable are honesty, open-mindedness, and willingness. With these we are well on our way.</p>
+          <p>We feel that our approach to the disease of addiction is completely realistic, for the therapeutic value of one addict helping another is without parallel. We feel that our way is practical, for one addict can best understand and help another addict. We believe that the sooner we face our problems within our society, in everyday living, just that much faster do we become acceptable, responsible, and productive members of that society.</p>
+          <p>The only way to keep from returning to active addiction is not to take that first drug. If you are like us you know that one is too many and a thousand never enough. We put great emphasis on this, for we know that when we use drugs in any form, or substitute one for another, we release our addiction all over again.</p>
+          <p>Thinking of alcohol as different from other drugs has caused a great many addicts to relapse. Before we came to NA, many of us viewed alcohol separately, but we cannot afford to be confused about this. Alcohol is a drug. We are people with the disease of addiction who must abstain from all drugs in order to recover.</p>
+          <ng-container *ngTemplateOutlet="naCite"></ng-container>
+
+          <h1>The Twelve Traditions of NA</h1>
+          <p>We keep what we have only with vigilance, and just as freedom for the individual comes from the Twelve Steps, so freedom for the group springs from our Traditions.</p>
+          <p>As long as the ties that bind us together are stronger than those that would tear us apart, all will be well.</p>
+          <ol>
+            <li>Our common welfare should come first; personal recovery depends on NA unity.</li>
+            <li>For our group purpose there is but one ultimate authority – a loving God as He may express Himself in our group conscience. Our leaders are but trusted servants; they do not govern.</li>
+            <li>The only requirement for membership is a desire to stop using.</li>
+            <li>Each group should be autonomous except in matters affecting other groups or NA as a whole.</li>
+            <li>Each group has but one primary purpose – to carry the message to the addict who still suffers.</li>
+            <li>An NA group ought never endorse, finance, or lend the NA name to any related facility or outside enterprise, lest problems of money, property, or prestige divert us from our primary purpose.</li>
+            <li>Every NA group ought to be fully self-supporting, declining outside contributions.</li>
+            <li>Narcotics Anonymous should remain forever nonprofessional, but our service centers may employ special workers.</li>
+            <li>NA, as such, ought never be organized, but we may create service boards or committees directly responsible to those they serve.</li>
+            <li>Narcotics Anonymous has no opinion on outside issues; hence the NA name ought never be drawn into public controversy.</li>
+            <li>Our public relations policy is based on attraction rather than promotion; we need always maintain personal anonymity at the level of press, radio, and films.</li>
+            <li>Anonymity is the spiritual foundation of all our Traditions, ever reminding us to place principles before personalities.</li>
+          </ol>
+          <p>Understanding these Traditions comes slowly over a period of time. We pick up information as we talk to members and visit various groups. It usually isn’t until we get involved with service that someone points out that “personal recovery depends on NA unity,” and that unity depends on how well we follow our Traditions. The Twelve Traditions of NA are not negotiable. They are the guidelines that keep our Fellowship alive and free.</p>
+          <p>By following these guidelines in our dealings with others, and society at large, we avoid many problems. That is not to say that our Traditions eliminate all problems. We still have to face difficulties as they arise: communication problems, differences of opinion, internal controversies, and troubles with individuals and groups outside the Fellowship. However, when we apply these principles, we avoid some of the pitfalls.</p>
+          <p>Many of our problems are like those that our predecessors had to face. Their hard won experience gave birth to the Traditions, and our own experience has shown that these principles are just as valid today as they were when these Traditions were formulated. Our Traditions protect us from the internal and external forces that could destroy us. They are truly the ties that bind us together. It is only through understanding and application that they work.</p>
+          <ng-container *ngTemplateOutlet="naCite"></ng-container>
+
+          <h1>Daily Meditation</h1>
+          <div class="jft" [innerHTML]="jft | async"></div>
+          <div>---</div>
+          <h1>Just for today.</h1>
+          <p>Tell yourself:<p>
+          <p>JUST FOR TODAY my thoughts will be on my recovery, living and enjoying life without the use of drugs.</p>
+          <p>JUST FOR TODAY I will have faith in someone in NA who believes in me and wants to help me in my recovery.</p>
+          <p>JUST FOR TODAY I will have a program. I will try to follow it to the best of my ability.</p>
+          <p>JUST FOR TODAY, through NA, I will try to get a better perspective on my life.</p>
+          <p>JUST FOR TODAY I will be unafraid. My thoughts will be on my new associations, people who are not using and who have found a new way of life. So long as I follow that way, I have nothing to fear.</p>
+
+          <ng-template #naCite>
+            <div class="na-cite">
+              <small>Reprinted from the Little White Booklet, Narcotics Anonymous.</small><br/>
+              <small>© 1986 by Narcotics Anonymous World Services, Inc., PO Box 9999, Van Nuys, CA 91409</small><br/>
+              <small>ISBN 0-912075-65-1 6/04</small>
+            </div>
+          </ng-template>
+
+        </div>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="3">
+      <a ngbNavLink>Meeting Info</a>
+      <ng-template ngbNavContent>
+        <div class="content meeting-info">
+          <div class="well">
+            <p>You can also join through the Zoom app with limited access to the meeting tools.</p>
+            <div>
+              <h4>Time: 12pm and 7pm CST Daily</h4>
+              <p>Join Zoom Meeting <a href="https://zoom.us/j/814584950">https://zoom.us/j/814584950</a></p>
+              <p>Meeting ID: 814 584 950</p>
+              <p>Password: 4311</p>
+              <p>One tap mobile</p>
+              <p>+13462487799,,814584950# US (Houston)</p>
+              <p>+16699009128,,814584950# US (San Jose)</p>
+
+              <p>Dial by your location<br/>
+                  +1 346 248 7799 US (Houston)<br/>
+                  +1 669 900 9128 US (San Jose)<br/>
+                  +1 312 626 6799 US (Chicago)<br/>
+                  +1 646 558 8656 US (New York)<br/>
+                  +1 253 215 8782 US<br/>
+                  +1 301 715 8592 US<br/>
+                  Meeting ID: 814 584 950</p>
+              <p>Find your local number: <a href="https://zoom.us/u/auUw8eye">https://zoom.us/u/auUw8eye</a></p>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </li>
+  </ul>
+  <div [ngbNavOutlet]="nav"></div>
+  <footer class="center">
+    <p>Urgent Help: <a href="tel:1-800-629-6757">1-800-NA-WORKS</a></p>
+    <p>Website Problems: support@savantly.net</p>
+  </footer>
 </div>

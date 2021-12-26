@@ -4,6 +4,7 @@ import { DOCUMENT } from '@angular/common';
 import { NgForm } from '@angular/forms';
 
 import { ZoomMtg } from '@zoomus/websdk';
+import { BehaviorSubject } from 'rxjs';
 
 ZoomMtg.preLoadWasm();
 ZoomMtg.prepareJssdk();
@@ -15,6 +16,7 @@ ZoomMtg.prepareJssdk();
 })
 export class AppComponent implements OnInit {
 
+  jftEndpoint = 'https://na-conference.herokuapp.com/api/public/jft';
   // setup your signautre endpoint here: https://github.com/zoom/websdk-sample-signature-node.js
   signatureEndpoint = 'https://na-conference.herokuapp.com/api/zoom/signature';
   apiKey = 'N4AyKlmIQGi_Nsw4cXFtlw';
@@ -24,13 +26,27 @@ export class AppComponent implements OnInit {
   userName = '';
   userEmail = '';
   passWord = '4311';
+  jft: BehaviorSubject<string> = new BehaviorSubject("");
 
   constructor(public httpClient: HttpClient, @Inject(DOCUMENT) document) {
 
   }
 
   ngOnInit() {
+    this.getJft();
+  }
 
+  getJft(){
+    this.httpClient.get(this.jftEndpoint, { responseType: 'text' })
+      .toPromise().then((data: any) => {
+        console.log(data)
+        if(data) {
+         this.jft.next(data);
+        } else {
+      }
+    }).catch((error) => {
+      console.log(error)
+    })
   }
 
   getSignature() {
